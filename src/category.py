@@ -7,6 +7,7 @@ class Category:
 
 class Category:
     """Определяем для каждого свой тип данных"""
+
     name: str
     description: str
     products: list
