@@ -28,8 +28,8 @@ if __name__ == "__main__":
     print(category1.name == "Смартфоны")
     print(category1.description)
     print(len(category1.products))
-    print(category1.count_category)
-    print(category1.count_product)
+    print(category1.category_count)
+    print(category1.product_count)
 
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category2 = Category("Телевизоры",
@@ -41,5 +41,5 @@ if __name__ == "__main__":
     print(len(category2.products))
     print(category2.products)
 
-    print(Category.count_category)
-    print(Category.count_product)
+    print(Category.category_count)
+    print(Category.product_count)
