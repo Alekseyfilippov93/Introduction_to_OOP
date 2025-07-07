@@ -5,7 +5,8 @@ from src.product import Product
 
 @pytest.fixture
 def sample_category():
-    return Category("Электроника", "Техника для дома")
+    products = ['Samsung Galaxy S23 Ultra', 'Iphone 15', 'Xiaomi Redmi Note 11']
+    return Category("Электроника", "Техника для дома", products)
 
 
 @pytest.fixture
@@ -17,11 +18,9 @@ def test_category_initialization(sample_category):
     """Проверка корректности инициализации категории."""
     assert sample_category.name == "Электроника"
     assert sample_category.description == "Техника для дома"
-    assert sample_category.products == []
+    assert sample_category.products == ['Samsung Galaxy S23 Ultra', 'Iphone 15', 'Xiaomi Redmi Note 11']
 
 
-def test_add_product(sample_category, sample_product):
-    """Проверка добавления товара в категорию."""
-    sample_category.add_product(sample_product)
-    assert len(sample_category.products) == 1
-    assert sample_category.products[0].name == "Ноутбук"
+def test_product_count_calculation(sample_category):
+    """Проверка корректного подсчета количества продуктов в категории."""
+    assert Category.product_count == len(sample_category.products)
