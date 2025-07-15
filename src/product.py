@@ -9,10 +9,10 @@ class Product:
     def new_product(cls, product_data: dict):
         """Классметод для создания продукта из словаря"""
         return cls(
-            name=product_data['name'],
-            description=product_data['description'],
-            price=product_data['price'],
-            quantity=product_data['quantity']
+            name=product_data["name"],
+            description=product_data["description"],
+            price=product_data["price"],
+            quantity=product_data["quantity"],
         )
 
     @property
