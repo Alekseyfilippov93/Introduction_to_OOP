@@ -10,7 +10,7 @@ class Product:
     @classmethod
     def new_product(cls, product_data: dict):
         """Классметод для создания продукта из словаря"""
-        price = product_data['price']
+        price = product_data["price"]
         if price <= 0:
             print("Цена не может быть меньше 0")
         return cls(
