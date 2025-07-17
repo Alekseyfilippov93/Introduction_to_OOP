@@ -2,16 +2,21 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name  # Название
         self.description = description  # Описание
-        self.__price = price  # Приватный атрибут цены.
+        self.__price = price if price > 0 else 0.0  # Приватный атрибут цены.
         self.quantity = quantity  # Количество в наличии
+        if price <= 0:
+            print("Цена не может быть меньше 0")
 
     @classmethod
     def new_product(cls, product_data: dict):
         """Классметод для создания продукта из словаря"""
+        price = product_data['price']
+        if price <= 0:
+            print("Цена не может быть меньше 0")
         return cls(
             name=product_data["name"],
             description=product_data["description"],
-            price=product_data["price"],
+            price=price,
             quantity=product_data["quantity"],
         )
 
