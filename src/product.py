@@ -7,16 +7,14 @@ class Product:
         if price <= 0:
             raise ValueError("Цена не может быть отрицательной")
 
-
     def __add__(self, other):
         """Магический метод сложения"""
         if not isinstance(other, Product):
             raise TypeError("Складываем только объекты product")
         return (self.price * self.quantity) + (other.price * other.quantity)
 
-
     @property
-    def price(self):
+    def price(self) -> float:
         return self.__price
 
     @classmethod
@@ -31,11 +29,6 @@ class Product:
             price=price,
             quantity=product_data["quantity"],
         )
-
-    @property
-    def price(self) -> float:
-        """Геттер для цены"""
-        return self.__price
 
     @price.setter
     def price(self, new_price: float) -> None:
