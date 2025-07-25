@@ -5,7 +5,7 @@ class Product:
         self.__price = price if price > 0 else 0.0  # Приватный атрибут цены.
         self.quantity = quantity  # Количество в наличии
         if price <= 0:
-            print("Цена не может быть меньше 0")
+            raise ValueError("Цена не может быть отрицательной")
 
     @classmethod
     def new_product(cls, product_data: dict):
