@@ -7,6 +7,18 @@ class Product:
         if price <= 0:
             raise ValueError("Цена не может быть отрицательной")
 
+
+    def __add__(self, other):
+        """Магический метод сложения"""
+        if not isinstance(other, Product):
+            raise TypeError("Складываем только объекты product")
+        return (self.price * self.quantity) + (other.price * other.quantity)
+
+
+    @property
+    def price(self):
+        return self.__price
+
     @classmethod
     def new_product(cls, product_data: dict):
         """Классметод для создания продукта из словаря"""
