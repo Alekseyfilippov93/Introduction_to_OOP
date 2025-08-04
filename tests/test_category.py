@@ -45,3 +45,14 @@ def test_add_product(sample_category, sample_product):
     sample_category.add_product(sample_product)
     assert len(sample_category.products) == initial_count + 1
     assert Category.product_count == initial_count + 1
+
+
+def test_total_price_calculation(sample_category, sample_products):
+    """Проверка расчета общей стоимости товаров в категории."""
+    total = sum(p.price * p.quantity for p in sample_products)
+    assert sample_category.total_price == total
+
+
+def test_len_method(sample_category):
+    """Проверка подсчёта общего количества товаров в категории"""
+    assert len(sample_category) == 27  # 5 (Samsung) + 8 (iPhone) + 14 (Xiaomi)

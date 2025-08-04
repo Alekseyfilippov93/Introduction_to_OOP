@@ -15,7 +15,6 @@ class Category:
         self.description = description  # Описание категории
         self.__products = []  # Список товаров с приватным доступом
         Category.category_count += 1
-        Category.product_count = len(products)
 
         for product in products:
             self.add_product(product)
@@ -33,11 +32,10 @@ class Category:
         if not isinstance(product, Product):
             raise TypeError("Добавляем только Product")
         self.__products.append(product)
-        Category.product_count += 1
 
-    def __leb__(self):
+    def __len__(self) -> int:
         """Считаем количество товаров"""
-        return len(self.__products)
+        return sum(product.quantity for product in self.__products)
 
     def __str__(self):
         """Строчное представление категории"""
