@@ -1,4 +1,7 @@
-class Product:
+from src.Base_product import BaseProduct
+
+
+class Product(BaseProduct):
     def __init__(self, name, description, price, quantity):
         self.name = name  # Название
         self.description = description  # Описание
