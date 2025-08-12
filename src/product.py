@@ -9,7 +9,7 @@ class Product:
 
     def __add__(self, other):
         """Магический метод сложения"""
-        if not isinstance(other, Product):
+        if not isinstance(other, self.__class__):
             raise TypeError("Складываем только объекты product")
         return (self.price * self.quantity) + (other.price * other.quantity)
 
