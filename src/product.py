@@ -1,12 +1,14 @@
 from src.Base_product import BaseProduct
+from src.class_mixin import PrintMixin
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, PrintMixin):
     def __init__(self, name, description, price, quantity):
         self.name = name  # Название
         self.description = description  # Описание
         self.__price = price if price > 0 else 0.0  # Приватный атрибут цены.
         self.quantity = quantity  # Количество в наличии
+        super().__init__()
         if price <= 0:
             raise ValueError("Цена не может быть отрицательной")
 
