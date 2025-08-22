@@ -1,6 +1,6 @@
 import pytest
-from src.Smartphone import Smartphone
-from src.LawnGrass import LawnGrass
+from src.smartphone import Smartphone
+from src.lawn_grass import LawnGrass
 
 
 @pytest.fixture

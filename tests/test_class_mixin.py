@@ -1,5 +1,5 @@
 from src.product import Product
-from src.Smartphone import Smartphone
+from src.smartphone import Smartphone
 
 
 def test_repr_output(capsys):

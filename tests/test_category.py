@@ -23,15 +23,12 @@ def sample_product():
     return Product("Ноутбук", "Игровой", 100000, 5)
 
 
-def test_category_initialization(sample_category):
+def test_category_initialization(sample_category, sample_products):
     """Проверка корректности инициализации категории."""
     assert sample_category.name == "Электроника"
     assert sample_category.description == "Техника для дома"
-    assert sample_category.products == [
-        "Samsung Galaxy S23 Ultra",
-        "Iphone 15",
-        "Xiaomi Redmi Note 11",
-    ]
+    assert len(sample_category.products) == 3
+    assert sample_category.products[0].name == "Samsung Galaxy S23 Ultra"
 
 
 def test_product_count_calculation(sample_category):
