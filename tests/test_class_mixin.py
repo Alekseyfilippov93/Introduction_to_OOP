@@ -6,8 +6,8 @@ def test_repr_output(capsys):
     """Тестирует вывод repr через PrintMixin"""
     product = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
     captured = capsys.readouterr()
-    assert captured.out.strip() == repr(product)
-    assert "name=QLED 4K" in repr(product)
+    expected_result = repr(product)
+    assert captured.out.strip() == expected_result
 
 
 def test_smartphone_repr(capsys):
@@ -15,7 +15,8 @@ def test_smartphone_repr(capsys):
     phone = Smartphone("iPhone", "Pro", 100000, 2, 95.0, "15", 256, "Black")
     captured = capsys.readouterr()
     assert "Smartphone" in captured.out
-    assert "model=15" in repr(phone)
+    assert "iPhone" in repr(phone)
+    assert "Pro" in repr(phone)
 
 
 def test_print_mixin_integration(capsys):

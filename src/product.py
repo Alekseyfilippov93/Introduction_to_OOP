@@ -25,7 +25,16 @@ class Product(BaseProduct, PrintMixin):
     @classmethod
     def new_product(cls, product_data: dict):
         """Классметод для создания продукта из словаря"""
-        required_fields = ["name", "description", "price", "quantity", "efficiency", "model", "memory", "color"]
+        required_fields = [
+            "name",
+            "description",
+            "price",
+            "quantity",
+            "efficiency",
+            "model",
+            "memory",
+            "color",
+        ]
         for field in required_fields:
             if field not in product_data:
                 raise ValueError(f"Не хватает обязательного поля: {field}")

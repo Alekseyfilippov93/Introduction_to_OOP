@@ -24,12 +24,12 @@ class Category:
         """Геттер для списка товаров"""
         return self.__products
 
-
     def add_product(self, product: Product):
         """Метод добавления товаров"""
         if not isinstance(product, Product):
             raise TypeError("Добавляем только Product")
         self.__products.append(product)
+        Category.product_count += 1  # Увеличиваем счетчик продуктов
 
     def __len__(self) -> int:
         """Считаем количество товаров"""
