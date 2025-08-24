@@ -10,7 +10,7 @@ class Category:
     category_count: int = 0
     product_count: int = 0
 
-    def __init__(self, name: str, description: str, products: list) -> None:
+    def __init__(self, name: str, description: str, products: list[Product]) -> None:
         self.name = name  # Название категории
         self.description = description  # Описание категории
         self.__products = []  # Список товаров с приватным доступом
@@ -20,18 +20,16 @@ class Category:
             self.add_product(product)
 
     @property
-    def products(self) -> str:
+    def products(self) -> list[Product]:
         """Геттер для списка товаров"""
-        return "\n".join(
-            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
-            for product in self.__products
-        )
+        return self.__products
 
     def add_product(self, product: Product):
         """Метод добавления товаров"""
         if not isinstance(product, Product):
             raise TypeError("Добавляем только Product")
         self.__products.append(product)
+        Category.product_count += 1  # Увеличиваем счетчик продуктов
 
     def __len__(self) -> int:
         """Считаем количество товаров"""

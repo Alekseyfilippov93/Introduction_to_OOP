@@ -10,3 +10,6 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
+    def __repr__(self):
+        return super().__repr__()
