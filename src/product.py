@@ -6,7 +6,7 @@ class Product(BaseProduct, PrintMixin):
     def __init__(self, name, description, price, quantity):
         if price <= 0:
             raise ValueError("Цена не может быть отрицательной")
-        if quantity == 0: # Проверяем исключения, если количество равна нулю
+        if quantity == 0:  # Проверяем исключения, если количество равна нулю
             raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name  # Название
         self.description = description  # Описание

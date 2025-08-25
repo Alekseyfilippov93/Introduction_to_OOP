@@ -34,3 +34,17 @@ def test_private_price(sample_product):  # Тесты на цену
 def test_add(sample_product, sample_product_2):
     """Тест на проверку магического метода сложения"""
     assert sample_product + sample_product_2 == 1000000
+
+
+def test_product_new_with_zero_quantity():
+    """Тест на создание продукта 0 количеством, при котором будет вызывать ValueError"""
+    with pytest.raises(ValueError) as exc_info:
+        Product("Не соответствует товар", "Неверное количество", 1000.0, 0)
+    assert "Товар с нулевым количеством не может быть добавлен" in str(exc_info.value)
+
+
+def test_with_more_0_quantity():
+    """Тест, на проверку, где количество шт больше 0"""
+    product = Product("Телефон", "Смартфон", 50000.0, 2)
+    assert product.quantity == 2
+    assert product.name == "Телефон"
