@@ -69,3 +69,8 @@ def test_midle_price_with_one_products():
     ]
     category = Category("Проверка теста", "Категория", products)
     assert category.middle_price() == 100.0
+
+def test_middle_price_empty_category():
+    """Тест где средняя цена возвращает 0 для пустой категории"""
+    category = Category("Пустая", "Категория", [])
+    assert category.middle_price() == 0.0

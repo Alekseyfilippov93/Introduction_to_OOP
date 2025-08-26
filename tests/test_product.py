@@ -48,3 +48,15 @@ def test_with_more_0_quantity():
     product = Product("Телефон", "Смартфон", 50000.0, 2)
     assert product.quantity == 2
     assert product.name == "Телефон"
+
+
+def test_price_setter_negative_value(capsys):
+    """Тест: попытка установить отрицательную цену выводит сообщение, но не меняет цену"""
+    product = Product("Телефон", "Смартфон", 50000.0, 10)
+    original_price = product.price
+    product.price = -1000.0  # Пытаемся поставить отрицательную цену
+    # Проверяем, что цена не изменилась
+    assert product.price == original_price
+    # Проверяем, что вывелось сообщение об ошибке
+    captured = capsys.readouterr()
+    assert "Цена не должна быть нулевая или отрицательная" in captured.out
