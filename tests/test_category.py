@@ -22,6 +22,11 @@ def sample_product():
     return Product("Ноутбук", "Игровой", 100000, 5)
 
 
+def test_product_count_calculation(sample_category):
+    """Проверка корректного подсчета количества продуктов в категории."""
+    assert Category.product_count == len(sample_category.products)
+
+
 def test_category_initialization(sample_category, sample_products):
     """Проверка корректности инициализации категории."""
     assert sample_category.name == "Электроника"
@@ -30,18 +35,13 @@ def test_category_initialization(sample_category, sample_products):
     assert sample_category.products[0].name == "Samsung Galaxy S23 Ultra"
 
 
-#def test_product_count_calculation(sample_category):
-#    """Проверка корректного подсчета количества продуктов в категории."""
-#    assert Category.product_count == len(sample_category.products)
-
-
 def test_add_product(sample_category, sample_product):
     """Проверка добавления продукта в категорию"""
     initial_count = len(sample_category.products)
     initial_total_count = Category.product_count
     sample_category.add_product(sample_product)
     assert (
-        len(sample_category.products) == initial_count + 1
+            len(sample_category.products) == initial_count + 1
     )  # Проверка количество продуктов увеличилось на 1
     assert Category.product_count == initial_total_count + 1
 
@@ -49,3 +49,28 @@ def test_add_product(sample_category, sample_product):
 def test_len_method(sample_category):
     """Проверка подсчёта общего количества товаров в категории"""
     assert len(sample_category) == 27  # 5 (Samsung) + 8 (iPhone) + 14 (Xiaomi)
+
+
+def test_midle_price_with_products():
+    """Тест на корректность вычисления средней цены"""
+    products = [
+        Product("Телефон_а", "Cерый", 100.0, 2),
+        Product("Телефон_б", "Синий", 200.0, 1),
+        Product("Телефон_в", "Зеленый", 300.0, 3),
+    ]
+    category = Category("Проверка теста", "Категория", products)
+    assert category.middle_price() == 200.0
+
+
+def test_midle_price_with_one_products():
+    """Тест на корректность вычисления средней цены с одним товаром"""
+    products = [
+        Product("Телефон_а", "Cерый", 100.0, 2),
+    ]
+    category = Category("Проверка теста", "Категория", products)
+    assert category.middle_price() == 100.0
+
+def test_middle_price_empty_category():
+    """Тест где средняя цена возвращает 0 для пустой категории"""
+    category = Category("Пустая", "Категория", [])
+    assert category.middle_price() == 0.0
